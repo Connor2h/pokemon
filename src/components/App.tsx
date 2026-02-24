@@ -1,26 +1,23 @@
-import { useQuery } from '@tanstack/react-query';
 import {  useState } from 'react'
+import { usePokemonListQuery } from '../hooks/usePokemonData';
 
-interface Pokemon {
+export interface Pokemon {
   name: string;
   url: string;
 }
 
+export interface PokemonListResponse{
+  results: Pokemon[];
+}
+
 export function App() {
+  const { data: pokemonData, isLoading, isSuccess } = usePokemonListQuery();
   const [pokemon, setPokemon] = useState<Pokemon[]>();
 
-  const getPokemonData = useQuery({
-    queryKey: ['pokemons'],
-    queryFn: async () => {
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
-      return await response.json();
-    },
-  });
-
   const handleClick = () => {
-    if(getPokemonData.data){
-      console.log(getPokemonData.data.results)
-      setPokemon(getPokemonData.data.results);
+    if(pokemonData){
+      console.log(pokemonData)
+      setPokemon(pokemonData);
     }
   }
 
