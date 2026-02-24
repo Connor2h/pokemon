@@ -1,14 +1,6 @@
 import {  useState } from 'react'
 import { usePokemonListQuery } from '../hooks/usePokemonData';
-
-export interface Pokemon {
-  name: string;
-  url: string;
-}
-
-export interface PokemonListResponse{
-  results: Pokemon[];
-}
+import type { Pokemon } from '../types/types';
 
 export function App() {
   const { data: pokemonData, isLoading, isSuccess } = usePokemonListQuery();

@@ -1,5 +1,5 @@
 import { useQuery, type UseQueryResult } from "@tanstack/react-query";
-import type { Pokemon, PokemonListResponse } from "../components/App";
+import type { Pokemon, PokemonListResponse } from "../types/types";
 
 export function usePokemonListQuery(): UseQueryResult<Pokemon[], Error>{
   return useQuery({
