@@ -1,22 +1,22 @@
-import {  useState } from 'react'
 import { usePokemonListQuery } from '../hooks/usePokemonData';
-import type { Pokemon } from '../types/types';
+import { PokemonImage } from './pokemon-image';
 
 export function App() {
-  const { data: pokemonData, isLoading, isSuccess } = usePokemonListQuery();
-  const [pokemon, setPokemon] = useState<Pokemon[]>();
-
-  const handleClick = () => {
-    if(pokemonData){
-      console.log(pokemonData)
-      setPokemon(pokemonData);
-    }
-  }
+  const { data: pokemonData, isSuccess } = usePokemonListQuery();
 
   return (
     <>
-      <button onClick={handleClick}>Fetch Pokemon</button>
-      {pokemon && pokemon.map(({name : pokemonName}) => <div key={pokemonName}>{pokemonName}</div>)}
+      <h1>GEN 1 Pokemon</h1>
+      {isSuccess && 
+      pokemonData.map(({name : pokemonName, url}) => {
+        console.log(url);
+        return (
+          <div key={pokemonName}>
+            {pokemonName}
+            <PokemonImage name={pokemonName} url={url}></PokemonImage>
+          </div>
+          )
+      })}
     </>
   )
 };
