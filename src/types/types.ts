@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 export interface Pokemon {
   name: string;
   url: string;
 }
 
-export interface PokemonListResponse{
-  results: Pokemon[];
+export interface PokemonContainerProps {
+  children: ReactNode
 }
 
 export interface PokemonDetail{
@@ -22,3 +24,7 @@ export interface PokemonDetail{
     };
   };
 };
+
+export interface PokemonListResponse{
+  results: Pokemon[];
+}
