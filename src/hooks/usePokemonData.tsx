@@ -14,6 +14,7 @@ export function usePokemonListQuery(): UseQueryResult<Pokemon[], Error> {
       // console.log(pokemonObjects.results);
       return pokemonObjects.results;
     },
+    staleTime: Infinity,
   });
 };
 
