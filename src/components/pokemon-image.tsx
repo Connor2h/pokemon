@@ -1,5 +1,6 @@
 import type { Pokemon, } from "../types/types";
 import { usePokemonImagesQuery } from "../hooks/usePokemonData";
+import styled from "@emotion/styled";
 
 export const PokemonImage = ({ url, name }: Pokemon) => {
   const { data, isLoading, isError } = usePokemonImagesQuery(url);
@@ -20,5 +21,11 @@ export const PokemonImage = ({ url, name }: Pokemon) => {
     return <span>No image available</span>;
   }
 
-  return <img src={imageUrl} alt={name} width={96} height={96} />;
+  return <StyledImage src={imageUrl} alt={name} />;
 };
+
+const StyledImage = styled.img`
+  width: 96px;
+  height: 96px;
+  display: block;
+`
