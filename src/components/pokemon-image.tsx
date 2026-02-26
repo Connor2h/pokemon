@@ -13,9 +13,7 @@ export const PokemonImage = ({ url, name }: Pokemon) => {
     return <span>Failed to load image</span>;
   }
 
-  const imageUrl =
-    data?.sprites.other?.['official-artwork']?.front_default ??
-    data?.sprites.front_default;
+  const imageUrl = data?.sprites.other?.['official-artwork']?.front_default ?? data?.sprites.front_default;
 
   if (!imageUrl) {
     return <span>No image available</span>;
